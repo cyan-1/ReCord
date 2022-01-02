@@ -1,2 +1,2 @@
 # ReCord
-really i dont even know, start obs recording  by join voice channel
+starts recording Voice Calls in Discord
