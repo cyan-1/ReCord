@@ -4,14 +4,19 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const bot = new Discord.Client();
 const prefix = config.prefix;
-
+//-------Change The UserID---------
+const userID = "688836813900480643";
+//---------------------------------
 obs.on('ConnectionOpened', () => {
   console.log('Connection Opened');
 });
 
-bot.on('voiceStateUpdate', newState => {
-  if(newState.member.user.id === "688836813900480643"){// change userID
+bot.on('voiceStateUpdate', (newState, oldState) => {
+  if(oldState.member.user.id === userID && oldState.channelID != null) {
     obs.sendCallback('StartRecording');
+  }
+  if(oldState.channelID == null){
+    obs.sendCallback('StopRecording');
   }
 })
 
@@ -49,7 +54,7 @@ function rec(message) {
 }
 function stop(message) {
   try{
-    obs.sendCallback('StartRecording');
+    obs.sendCallback('StopRecording');
   }catch(e){console.log(e);}
   message.channel.send("Recording Stopped!");
 }
