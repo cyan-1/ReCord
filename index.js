@@ -50,7 +50,7 @@ function rec(message) {
   try{
     obs.sendCallback('StartRecording');
   }catch(e){console.log(e);}
-  message.channel.send("Recoding Started!");
+  message.channel.send("Recording Started!");
 }
 function stop(message) {
   try{
